@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Hiwot Kifle — Digital Marketing Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050508;
+  --magenta:#ff2d78;
+  --cyan:#00e5ff;
+  --lime:#b8ff3c;
+  --white:#f0eee8;
+  --gray:#2a2830;
+  --gray2:#1a1820;
+  --muted:#6e6b7a;
+  --ff-display:'Bebas Neue',sans-serif;
+  --ff-body:'Syne',sans-serif;
+  --ff-mono:'Space Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-body);
+  background:var(--black);
+  color:var(--white);
+  overflow-x:hidden;
+  cursor:crosshair;
+}
+
+/* SCANLINE OVERLAY */
+body::before{
+  content:'';
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 48px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  background:rgba(5,5,8,0.85);
+  backdrop-filter:blur(20px);
+}
+.nav-logo{
+  font-family:var(--ff-display);
+  font-size:22px;
+  letter-spacing:0.12em;
+  color:var(--white);
+  text-decoration:none;
+}
+.nav-logo span{color:var(--magenta);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{
+  font-family:var(--ff-mono);
+  font-size:11px;
+  color:var(--muted);
+  text-decoration:none;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  transition:color 0.2s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;bottom:-4px;left:0;right:0;
+  height:1px;background:var(--magenta);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.2s;
+}
+.nav-links a:hover{color:var(--magenta);}
+.nav-links a:hover::after{transform:scaleX(1);}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  padding-top:80px;
+  position:relative;
+  overflow:hidden;
+  display:flex;align-items:center;
+}
+.hero-bg-text{
+  position:absolute;
+  font-family:var(--ff-display);
+  font-size:28vw;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,45,120,0.07);
+  letter-spacing:-0.02em;
+  top:50%;transform:translateY(-50%);
+  right:-5%;
+  pointer-events:none;
+  line-height:1;
+  white-space:nowrap;
+}
+.hero-grid{
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 520px;
+  gap:0;
+  padding:0 48px;
+  position:relative;z-index:1;
+}
+.hero-left{padding:60px 0;}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--ff-mono);
+  font-size:11px;
+  color:var(--cyan);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+}
+.hero-eyebrow::before{
+  content:'';
+  width:40px;height:1px;
+  background:var(--cyan);
+}
+.hero-name{
+  font-family:var(--ff-display);
+  font-size:clamp(80px,10vw,140px);
+  line-height:0.92;
+  letter-spacing:0.02em;
+  margin-bottom:4px;
+}
+.hero-name .line1{color:var(--white);}
+.hero-name .line2{
+  color:transparent;
+  -webkit-text-stroke:2px var(--magenta);
+  display:block;
+}
+.hero-role{
+  font-family:var(--ff-mono);
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:0.08em;
+  margin:24px 0 36px;
+  text-transform:uppercase;
+}
+.hero-bio{
+  font-size:15px;
+  color:rgba(240,238,232,0.65);
+  line-height:1.85;
+  max-width:480px;
+  margin-bottom:44px;
+}
+.hero-actions{display:flex;gap:16px;align-items:center;}
+.btn-primary{
+  font-family:var(--ff-mono);
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--black);
+  background:var(--magenta);
+  border:none;
+  padding:14px 28px;
+  text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:background 0.2s,transform 0.15s;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);
+}
+.btn-primary:hover{background:var(--cyan);transform:translate(-2px,-2px);}
+.btn-outline{
+  font-family:var(--ff-mono);
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,0.2);
+  padding:13px 24px;
+  text-decoration:none;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);}
+
+.hero-right{
+  border-left:1px solid rgba(255,255,255,0.06);
+  padding:60px 0 60px 48px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.stat-stack{display:flex;flex-direction:column;gap:0;}
+.stat-row{
+  padding:24px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:baseline;gap:16px;
+}
+.stat-row:first-child{border-top:1px solid rgba(255,255,255,0.06);}
+.stat-number{
+  font-family:var(--ff-display);
+  font-size:52px;
+  line-height:1;
+  color:var(--magenta);
+  letter-spacing:0.02em;
+  min-width:120px;
+}
+.stat-desc{font-size:13px;color:var(--muted);line-height:1.5;}
+
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-top:32px;
+}
+.hero-tag{
+  font-family:var(--ff-mono);
+  font-size:10px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border:1px solid rgba(0,229,255,0.25);
+  color:var(--cyan);
+  transition:background 0.2s;
+}
+.hero-tag:hover{background:rgba(0,229,255,0.08);}
+
+/* TICKER */
+.ticker-wrap{
+  overflow:hidden;
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  background:var(--gray2);
+  padding:12px 0;
+}
+.ticker{
+  display:flex;gap:0;
+  animation:ticker 20s linear infinite;
+  white-space:nowrap;
+  width:max-content;
+}
+.ticker-item{
+  font-family:var(--ff-display);
+  font-size:18px;
+  letter-spacing:0.1em;
+  color:var(--muted);
+  padding:0 40px;
+  display:flex;align-items:center;gap:40px;
+}
+.ticker-item span{color:var(--magenta);}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION BASICS */
+section{padding:120px 0;}
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+
+.s-label{
+  font-family:var(--ff-mono);
+  font-size:10px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--magenta);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.s-label::before{content:'//';opacity:0.5;}
+.s-title{
+  font-family:var(--ff-display);
+  font-size:clamp(48px,6vw,80px);
+  line-height:0.95;
+  letter-spacing:0.03em;
+  margin-bottom:16px;
+}
+.s-sub{font-size:15px;color:var(--muted);line-height:1.8;max-width:500px;margin-bottom:64px;}
+
+/* SERVICES */
+#services{background:var(--gray2);}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(255,255,255,0.05);
+}
+.srv{
+  background:var(--black);
+  padding:44px 36px;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+  cursor:default;
+}
+.srv::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--magenta),var(--cyan));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s;
+}
+.srv:hover{background:var(--gray);}
+.srv:hover::before{transform:scaleX(1);}
+.srv-num{
+  font-family:var(--ff-display);
+  font-size:64px;
+  color:rgba(255,255,255,0.04);
+  line-height:1;
+  position:absolute;top:20px;right:24px;
+}
+.srv-icon{
+  width:48px;height:48px;
+  border:1px solid rgba(255,45,120,0.3);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--magenta);
+  margin-bottom:24px;
+}
+.srv-icon svg{width:22px;height:22px;}
+.srv-name{
+  font-size:18px;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:12px;
+  line-height:1.2;
+}
+.srv-desc{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* SKILLS */
+#skills{background:var(--black);}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
+.skills-intro p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:20px;}
+
+.skill-list{display:flex;flex-direction:column;gap:20px;}
+.skill-item{}
+.skill-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.skill-name{font-size:13px;font-weight:700;color:var(--white);letter-spacing:0.04em;text-transform:uppercase;}
+.skill-val{font-family:var(--ff-mono);font-size:12px;color:var(--cyan);}
+.skill-bar{height:2px;background:rgba(255,255,255,0.07);position:relative;overflow:hidden;}
+.skill-bar-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:linear-gradient(90deg,var(--magenta),var(--cyan));
+  transform:scaleX(0);transform-origin:left;
+  animation:fillSkill 1.4s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@keyframes fillSkill{to{transform:scaleX(1)}}
+
+/* EXPERIENCE */
+#experience{background:var(--gray2);}
+.exp-list{display:flex;flex-direction:column;gap:0;}
+.exp-item{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:48px;
+  padding:48px 0;
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:relative;
+}
+.exp-item::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:2px;
+  background:transparent;
+  transition:background 0.3s;
+}
+.exp-item:hover::before{background:linear-gradient(180deg,var(--magenta),var(--cyan));}
+.exp-side{}
+.exp-period{
+  font-family:var(--ff-mono);
+  font-size:11px;
+  color:var(--magenta);
+  letter-spacing:0.08em;
+  margin-bottom:8px;
+}
+.exp-co{font-size:13px;color:var(--muted);}
+.exp-main{}
+.exp-role{
+  font-family:var(--ff-display);
+  font-size:32px;
+  letter-spacing:0.04em;
+  color:var(--white);
+  margin-bottom:16px;
+  line-height:1.1;
+}
+.exp-body{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.exp-tag{
+  font-family:var(--ff-mono);
+  font-size:10px;
+  letter-spacing:0.08em;
+  padding:4px 10px;
+  border:1px solid rgba(255,255,255,0.08);
+  color:rgba(240,238,232,0.5);
+}
+
+/* PORTFOLIO */
+#portfolio{background:var(--black);}
+.port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,0.04);}
+.proj{
+  background:var(--black);
+  padding:44px 40px;
+  position:relative;
+  overflow:hidden;
+  transition:background 0.25s;
+  cursor:default;
+}
+.proj:hover{background:#0d0b10;}
+.proj-big{
+  grid-column:span 2;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--gray2);
+  padding:0;
+}
+.proj-big-content{padding:60px 56px;}
+.proj-big-visual{
+  display:flex;align-items:center;justify-content:center;
+  background:#0a0812;
+  border-left:1px solid rgba(255,255,255,0.04);
+  min-height:340px;
+}
+.big-metric{text-align:center;}
+.big-num{
+  font-family:var(--ff-display);
+  font-size:100px;
+  line-height:1;
+  background:linear-gradient(135deg,var(--magenta),var(--cyan));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.big-label{font-family:var(--ff-mono);font-size:11px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px;}
+.proj-num{
+  font-family:var(--ff-display);
+  font-size:56px;
+  color:rgba(255,255,255,0.04);
+  line-height:1;
+  margin-bottom:16px;
+}
+.proj-type{
+  font-family:var(--ff-mono);
+  font-size:10px;
+  letter-spacing:0.12em;
+  color:var(--cyan);
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.proj-title{
+  font-size:20px;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:14px;
+  line-height:1.25;
+}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+.proj-result{
+  font-family:var(--ff-mono);
+  font-size:12px;
+  color:var(--magenta);
+  display:flex;align-items:center;gap:6px;
+}
+.proj-result::before{content:'↑';}
+
+/* WHY */
+#why{
+  background:var(--gray2);
+  position:relative;overflow:hidden;
+}
+#why::before{
+  content:'WHY';
+  position:absolute;
+  font-family:var(--ff-display);
+  font-size:40vw;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,45,120,0.04);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  white-space:nowrap;
+}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,0.04);}
+.why-card{
+  background:var(--gray2);
+  padding:40px 32px;
+  transition:background 0.2s;
+  cursor:default;
+}
+.why-card:hover{background:#1e1c24;}
+.why-n{
+  font-family:var(--ff-display);
+  font-size:80px;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,45,120,0.2);
+  line-height:1;
+  margin-bottom:16px;
+}
+.why-h{
+  font-size:16px;
+  font-weight:700;
+  color:var(--white);
+  margin-bottom:10px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.why-b{font-size:13px;color:var(--muted);line-height:1.8;}
+
+/* CONTACT */
+#contact{
+  background:var(--black);
+  padding-bottom:0;
+}
+.contact-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.contact-big{
+  font-family:var(--ff-display);
+  font-size:clamp(60px,8vw,110px);
+  line-height:0.9;
+  letter-spacing:0.03em;
+  margin-bottom:32px;
+}
+.contact-big .stroke{
+  display:block;
+  color:transparent;
+  -webkit-text-stroke:2px var(--magenta);
+}
+.contact-para{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:40px;}
+.contact-list{display:flex;flex-direction:column;gap:12px;}
+.contact-row{
+  display:flex;align-items:center;gap:20px;
+  padding:20px 24px;
+  border:1px solid rgba(255,255,255,0.06);
+  text-decoration:none;
+  color:var(--white);
+  transition:border-color 0.2s,background 0.2s;
+  position:relative;
+  overflow:hidden;
+}
+.contact-row::after{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;
+  width:3px;
+  background:linear-gradient(180deg,var(--magenta),var(--cyan));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 0.3s;
+}
+.contact-row:hover{border-color:rgba(255,45,120,0.3);background:rgba(255,45,120,0.04);}
+.contact-row:hover::after{transform:scaleY(1);}
+.contact-ico{
+  width:40px;height:40px;
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--magenta);
+  flex-shrink:0;
+}
+.contact-ico svg{width:18px;height:18px;}
+.contact-detail-label{font-family:var(--ff-mono);font-size:10px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:3px;}
+.contact-detail-val{font-size:14px;font-weight:700;color:var(--white);}
+.contact-arrow{margin-left:auto;color:var(--muted);font-size:18px;transition:color 0.2s,transform 0.2s;}
+.contact-row:hover .contact-arrow{color:var(--magenta);transform:translateX(4px);}
+
+/* FOOTER */
+footer{
+  background:var(--gray2);
+  border-top:1px solid rgba(255,255,255,0.05);
+  padding:28px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:100px;
+}
+.footer-logo{font-family:var(--ff-display);font-size:18px;letter-spacing:0.1em;color:rgba(240,238,232,0.4);}
+.footer-logo span{color:var(--magenta);}
+.footer-copy{font-family:var(--ff-mono);font-size:11px;color:var(--muted);letter-spacing:0.06em;}
+
+/* ANIMATIONS */
+@keyframes fadeSlide{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{animation:fadeSlide 0.6s ease both 0.1s}
+.hero-name{animation:fadeSlide 0.6s ease both 0.2s}
+.hero-role{animation:fadeSlide 0.6s ease both 0.3s}
+.hero-bio{animation:fadeSlide 0.6s ease both 0.4s}
+.hero-actions{animation:fadeSlide 0.6s ease both 0.5s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">HIWOT<span>.</span>K</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">XP</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-text">HK</div>
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Digital Marketing Specialist</div>
+      <h1 class="hero-name">
+        <span class="line1">HIWOT</span>
+        <span class="line2">KIFLE</span>
+      </h1>
+      <p class="hero-role">Strategy · Content · Growth · Branding</p>
+      <p class="hero-bio">I help brands cut through digital noise with campaigns that connect, content that converts, and strategies that scale. Fueled by creativity, powered by data — every brand has a story worth telling brilliantly.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Let's work together →</a>
+        <a href="#portfolio" class="btn-outline">View my work</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-stack">
+        <div class="stat-row"><span class="stat-number">4+</span><span class="stat-desc">Years delivering results-driven digital campaigns</span></div>
+        <div class="stat-row"><span class="stat-number">30+</span><span class="stat-desc">Brands grown across industries and platforms</span></div>
+        <div class="stat-row"><span class="stat-number">3×</span><span class="stat-desc">Average return on ad spend for clients</span></div>
+        <div class="stat-row"><span class="stat-number">200%</span><span class="stat-desc">Average engagement lift across social campaigns</span></div>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">Social Media</span>
+        <span class="hero-tag">SEO</span>
+        <span class="hero-tag">Meta Ads</span>
+        <span class="hero-tag">Content</span>
+        <span class="hero-tag">Branding</span>
+        <span class="hero-tag">Analytics</span>
+        <span class="hero-tag">Email</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">Social Media Management <span>★</span></span>
+    <span class="ticker-item">Content Marketing <span>★</span></span>
+    <span class="ticker-item">SEO Optimization <span>★</span></span>
+    <span class="ticker-item">Paid Advertising <span>★</span></span>
+    <span class="ticker-item">Brand Strategy <span>★</span></span>
+    <span class="ticker-item">Email Marketing <span>★</span></span>
+    <span class="ticker-item">Social Media Management <span>★</span></span>
+    <span class="ticker-item">Content Marketing <span>★</span></span>
+    <span class="ticker-item">SEO Optimization <span>★</span></span>
+    <span class="ticker-item">Paid Advertising <span>★</span></span>
+    <span class="ticker-item">Brand Strategy <span>★</span></span>
+    <span class="ticker-item">Email Marketing <span>★</span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="s-label">What I offer</p>
+    <h2 class="s-title">SERVICES<br>BUILT TO<br>GROW</h2>
+    <p class="s-sub">End-to-end digital marketing solutions — from strategy to execution — tailored precisely to your goals.</p>
+    <div class="services-grid">
+      <div class="srv">
+        <span class="srv-num">01</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 4s-2.5 2.5-5 5c-2.5 2.5-5.5 2.5-8 5s-5 8-5 8"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3 class="srv-name">Social Media Management</h3>
+        <p class="srv-desc">Strategic scheduling, community management, and content calendars that keep your audience engaged and your brand top-of-mind across every platform.</p>
+      </div>
+      <div class="srv">
+        <span class="srv-num">02</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 class="srv-name">Content Marketing</h3>
+        <p class="srv-desc">Blog posts, captions, scripts, and visuals that tell your brand story — content engineered to inform, inspire, and convert across every channel.</p>
+      </div>
+      <div class="srv">
+        <span class="srv-num">03</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3 class="srv-name">SEO Optimization</h3>
+        <p class="srv-desc">On-page, off-page, and technical SEO to improve organic rankings, drive qualified traffic, and ensure the right people find your brand first.</p>
+      </div>
+      <div class="srv">
+        <span class="srv-num">04</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3 class="srv-name">Facebook & Instagram Ads</h3>
+        <p class="srv-desc">Targeted paid campaigns with precise audience segmentation, compelling creatives, and continuous optimisation to maximise reach and ROI.</p>
+      </div>
+      <div class="srv">
+        <span class="srv-num">05</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3 class="srv-name">Branding Strategy</h3>
+        <p class="srv-desc">Visual identity, brand voice, and positioning frameworks that make your business instantly recognisable and deeply memorable to your target market.</p>
+      </div>
+      <div class="srv">
+        <span class="srv-num">06</span>
+        <div class="srv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <h3 class="srv-name">Email Marketing</h3>
+        <p class="srv-desc">Automated sequences, newsletters, and nurture flows that build relationships, recover lost leads, and drive repeat revenue from your existing audience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="skills-layout">
+      <div class="skills-intro">
+        <p class="s-label">Expertise</p>
+        <h2 class="s-title">TOOLS &amp;<br>SKILLS</h2>
+        <p>I pair creative instinct with data-driven discipline. From designing scroll-stopping visuals in Canva to dissecting campaign performance in Google Analytics — every tool serves one purpose: measurable, sustainable brand growth.</p>
+        <p>My toolkit evolves constantly, because the digital landscape never stands still.</p>
+      </div>
+      <div class="skill-list">
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Social Media Strategy</span><span class="skill-val">95%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:95%;animation-delay:0.1s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Content Writing</span><span class="skill-val">92%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:92%;animation-delay:0.2s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Meta Ads Manager</span><span class="skill-val">90%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:90%;animation-delay:0.3s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">SEO Optimization</span><span class="skill-val">88%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:88%;animation-delay:0.4s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Canva &amp; Visual Design</span><span class="skill-val">93%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:93%;animation-delay:0.5s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Google Analytics</span><span class="skill-val">87%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:87%;animation-delay:0.6s"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-top"><span class="skill-name">Campaign Management</span><span class="skill-val">91%</span></div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="width:91%;animation-delay:0.7s"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="s-label">Career</p>
+    <h2 class="s-title">EXPERIENCE</h2>
+    <p class="s-sub">Roles, results, and the brands I've helped grow.</p>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-side">
+          <div class="exp-period">2023 – Present</div>
+          <div class="exp-co">Veritas Digital Agency</div>
+        </div>
+        <div class="exp-main">
+          <h3 class="exp-role">Senior Digital Marketing Specialist</h3>
+          <p class="exp-body">Led end-to-end digital strategy for 12 B2C and B2B clients across retail, hospitality, and tech sectors. Developed multi-channel content calendars and oversaw Meta and Google campaigns consistently delivering 3× ROAS. Grew combined client social followings by 180% within 18 months through targeted community building.</p>
+          <div class="exp-tags"><span class="exp-tag">Meta Ads</span><span class="exp-tag">Google Ads</span><span class="exp-tag">Content Strategy</span><span class="exp-tag">Client Management</span></div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-side">
+          <div class="exp-period">2021 – 2023</div>
+          <div class="exp-co">Addis Brand Co.</div>
+        </div>
+        <div class="exp-main">
+          <h3 class="exp-role">Digital Marketing &amp; Branding Manager</h3>
+          <p class="exp-body">Spearheaded a full rebrand for a leading local retail group, unifying tone of voice, visual identity, and digital presence. Managed Instagram and Facebook channels achieving 220% increase in monthly engagement. SEO-optimised blog content improved organic search traffic by 145% in one year.</p>
+          <div class="exp-tags"><span class="exp-tag">Brand Identity</span><span class="exp-tag">SEO</span><span class="exp-tag">Instagram</span><span class="exp-tag">Content Creation</span></div>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-side">
+          <div class="exp-period">2020 – 2021</div>
+          <div class="exp-co">Freelance</div>
+        </div>
+        <div class="exp-main">
+          <h3 class="exp-role">Social Media &amp; Content Consultant</h3>
+          <p class="exp-body">Partnered with startups and small businesses to build digital presence from the ground up. Designed Instagram and Facebook launch strategies, wrote brand copy, and created Canva visuals. Email campaigns via Mailchimp averaged 42% open rates — well above industry benchmarks.</p>
+          <div class="exp-tags"><span class="exp-tag">Mailchimp</span><span class="exp-tag">Canva</span><span class="exp-tag">Copywriting</span><span class="exp-tag">Social Strategy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <p class="s-label">Selected Work</p>
+    <h2 class="s-title">PORTFOLIO</h2>
+    <p class="s-sub">Campaigns, content, and brand work that made a measurable difference.</p>
+    <div class="port-grid">
+      <div class="proj proj-big">
+        <div class="proj-big-content">
+          <div class="proj-num">01</div>
+          <p class="proj-type">Social Media Campaign</p>
+          <h3 class="proj-title">Sunrise Café: From 800 to 18K Followers in 6 Months</h3>
+          <p class="proj-desc">Full Instagram growth strategy — daily Reels, Story sequences, influencer partnerships, and a UGC campaign. Exponential community growth and a 340% jump in monthly foot traffic from social referrals.</p>
+          <p class="proj-result">340% increase in social-driven foot traffic</p>
+        </div>
+        <div class="proj-big-visual">
+          <div class="big-metric">
+            <div class="big-num">18K</div>
+            <div class="big-label">Followers gained</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj">
+        <div class="proj-num">02</div>
+        <p class="proj-type">Content Creation</p>
+        <h3 class="proj-title">EcoWear Ethiopia: Content Suite &amp; Brand Voice</h3>
+        <p class="proj-desc">90-day content library aligned with a new brand voice guide. Lifted average post reach from 600 to 14,000+ organically.</p>
+        <p class="proj-result">14,000+ avg. organic reach per post</p>
+      </div>
+      <div class="proj">
+        <div class="proj-num">03</div>
+        <p class="proj-type">Advertising Campaign</p>
+        <h3 class="proj-title">HealthFirst Clinic: Meta Lead-Gen Campaign</h3>
+        <p class="proj-desc">Facebook and Instagram lead-gen targeting adults 25–45. Three creative variants, retargeting funnels, weekly optimisation. CPL 62% below client target.</p>
+        <p class="proj-result">62% lower cost-per-lead than target</p>
+      </div>
+      <div class="proj">
+        <div class="proj-num">04</div>
+        <p class="proj-type">Branding Project</p>
+        <h3 class="proj-title">Kefet Finance: Full Digital Brand Identity</h3>
+        <p class="proj-desc">Logo direction, colour palette, typography, social templates, and tone-of-voice guidelines for a fintech startup. Improved website session duration by 55%.</p>
+        <p class="proj-result">55% improvement in on-site engagement</p>
+      </div>
+      <div class="proj">
+        <div class="proj-num">05</div>
+        <p class="proj-type">SEO + Content</p>
+        <h3 class="proj-title">Mela Skincare: Organic Search Growth</h3>
+        <p class="proj-desc">24 SEO-optimised articles, improved site structure, targeted backlink outreach. Organic traffic grew 210% year-on-year; five articles ranked on Google page 1.</p>
+        <p class="proj-result">210% YoY organic traffic growth</p>
+      </div>
+      <div class="proj">
+        <div class="proj-num">06</div>
+        <p class="proj-type">Email Marketing</p>
+        <h3 class="proj-title">StyleHouse: Automated Nurture Sequences</h3>
+        <p class="proj-desc">5-part welcome series and abandoned-cart flow in Mailchimp. Welcome series hit 58% open rate. Abandoned-cart flow recovered 22% of lost sales.</p>
+        <p class="proj-result">58% average email open rate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="container">
+    <p class="s-label">Why work with me</p>
+    <h2 class="s-title">THE HIWOT<br>DIFFERENCE</h2>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-n">01</div><h3 class="why-h">Creative Thinking</h3><p class="why-b">Every campaign starts with a blank page, your unique story, and genuine creative curiosity to find the angle that makes audiences stop scrolling.</p></div>
+      <div class="why-card"><div class="why-n">02</div><h3 class="why-h">Pro Communication</h3><p class="why-b">Clear briefs, transparent reporting, and proactive updates. You'll always know what's happening, why, and what comes next.</p></div>
+      <div class="why-card"><div class="why-n">03</div><h3 class="why-h">Results-Oriented</h3><p class="why-b">Vanity metrics don't pay bills. Every strategy is anchored to KPIs that matter: leads, conversions, revenue, and measurable brand growth.</p></div>
+      <div class="why-card"><div class="why-n">04</div><h3 class="why-h">Brand Instinct</h3><p class="why-b">Great marketing feels right before it can be measured. I have a sharp eye for what makes a brand cohesive, compelling, and unmistakably distinct.</p></div>
+      <div class="why-card"><div class="why-n">05</div><h3 class="why-h">Consistency</h3><p class="why-b">Sustainable growth comes from showing up every day. The same care and craft goes into week 12 of a campaign as week one.</p></div>
+      <div class="why-card"><div class="why-n">06</div><h3 class="why-h">Always Evolving</h3><p class="why-b">The algorithm changes. The platforms shift. I stay ahead of every trend to leverage them strategically before your competitors do.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <div class="contact-big">
+          LET'S<br>
+          <span class="stroke">TALK.</span>
+        </div>
+        <p class="contact-para">Whether you have a clear brief or just the seed of an idea, I'd love to hear from you. Let's build something remarkable together.</p>
+      </div>
+      <div class="contact-list">
+        <a href="mailto:hiwot.kifle@email.com" class="contact-row">
+          <div class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-detail-label">Email</div><div class="contact-detail-val">hiwot.kifle@email.com</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="tel:+2519XXXXXXXX" class="contact-row">
+          <div class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="contact-detail-label">Phone</div><div class="contact-detail-val">+251 9XX XXX XXX</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://linkedin.com/in/hiwot-kifle" target="_blank" class="contact-row">
+          <div class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="contact-detail-label">LinkedIn</div><div class="contact-detail-val">linkedin.com/in/hiwot-kifle</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://instagram.com/hiwot.kifle" target="_blank" class="contact-row">
+          <div class="contact-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div><div class="contact-detail-label">Instagram</div><div class="contact-detail-val">@hiwot.kifle</div></div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">HIWOT<span>.</span>KIFLE</span>
+  <span class="footer-copy">© 2026 · Digital Marketing Specialist · Addis Ababa, Ethiopia</span>
+</footer>
+
+</body>
+</html>
